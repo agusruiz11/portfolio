@@ -5,6 +5,11 @@ const RaccoonLogo = ({ className = "", size = 140 }) => {
   const containerRef = useRef(null);
   const [svgContent, setSvgContent] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const isHoveredRef = useRef(false);
+
+  useEffect(() => {
+    isHoveredRef.current = isHovered;
+  }, [isHovered]);
 
   useEffect(() => {
     fetch('/mapache-01.svg')
@@ -30,6 +35,13 @@ const RaccoonLogo = ({ className = "", size = 140 }) => {
       }
 
       const handleMouseMove = (e) => {
+        // Si el mouse está sobre el logo, no hacer nada
+        if (isHoveredRef.current) return;
+        
+        const leftPupil = document.getElementById('leftPupil');
+        const rightPupil = document.getElementById('rightPupil');
+        if (!leftPupil || !rightPupil) return;
+        
         const rect = container.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
@@ -89,6 +101,24 @@ const RaccoonLogo = ({ className = "", size = 140 }) => {
       return () => window.removeEventListener('mousemove', handleMouseMove);
     }, 100);
   }, [svgContent]);
+
+  // Resetear pupilas al centro cuando el mouse está sobre el logo
+  useEffect(() => {
+    if (isHovered) {
+      const leftPupil = document.getElementById('leftPupil');
+      const rightPupil = document.getElementById('rightPupil');
+      
+      if (leftPupil && rightPupil) {
+        gsap.to([leftPupil, rightPupil], {
+          x: 0,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+          transformOrigin: "center"
+        });
+      }
+    }
+  }, [isHovered]);
 
   const normalFilter = 'drop-shadow(0 0 25px rgba(0, 102, 255, 0.4)) drop-shadow(0 0 15px rgba(0, 212, 170, 0.3))';
   const hoverFilter = 'drop-shadow(0 0 45px rgba(0, 102, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 212, 170, 0.7)) drop-shadow(0 0 50px rgba(0, 102, 255, 0.5))';
