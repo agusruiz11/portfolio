@@ -152,6 +152,17 @@ body {
   padding: 5rem 0;
 }
 
+/* Logo del mapache con brillo personalizado */
+.raccoon-logo-glow {
+  filter: drop-shadow(0 0 25px rgba(0, 102, 255, 0.4)) drop-shadow(0 0 15px rgba(0, 212, 170, 0.3));
+  transition: all 0.3s ease;
+}
+
+.raccoon-logo-glow:hover {
+  filter: drop-shadow(0 0 35px rgba(0, 102, 255, 0.6)) drop-shadow(0 0 25px rgba(0, 212, 170, 0.5)) drop-shadow(0 0 15px rgba(0, 102, 255, 0.8));
+  transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
   .section-padding {
     padding: 3rem 0;

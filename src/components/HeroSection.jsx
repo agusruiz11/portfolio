@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Download, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
+import RaccoonLogo from './RaccoonLogo';
 
 const HeroSection = () => {
   const handleViewProjects = () => {
@@ -53,6 +54,11 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+          {/* Logo del Mapache - Estilo Nocturno */}
+          <div className="flex justify-center -mb-20">
+            <RaccoonLogo size={350} className="transition-all duration-300 hover:scale-105" />
+          </div>
+
           <motion.h1 
             className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
             initial={{ opacity: 0, scale: 0.5 }}
