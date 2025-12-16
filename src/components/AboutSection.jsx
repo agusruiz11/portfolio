@@ -70,7 +70,7 @@ const AboutSection = () => {
                   <img 
                     alt="Foto de perfil de Agustín Mariano Ruiz"
                     className="w-full h-full object-cover rounded-full"
-                   src="https://images.unsplash.com/photo-1597069170894-eb727a7a7b3c" />
+                   src="./public/mapache-small.png" />
                 </div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full blur-xl opacity-60"></div>
                 <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full blur-xl opacity-40"></div>

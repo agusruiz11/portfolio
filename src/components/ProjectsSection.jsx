@@ -8,40 +8,51 @@ import { toast } from '@/components/ui/use-toast';
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "E-commerce Moderno",
-      description: "Plataforma de comercio electrónico con React, Node.js y Stripe. Incluye panel de administración completo.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "Modern e-commerce website with clean design and shopping cart"
+      title: "Plataforma Sello Ambiental COA",
+      description: "Es una distinción otorgada por el Comité Olímpico Argentino a las organizaciones deportivas que integran la sostenibilidad en su gestión diaria. ",
+      technologies: ["Wordpress"],
+      video: "/projects/selloAmbientalCOAvid.webm",
+      demo: "https://selloambientalcoa.com.ar/"
     },
     {
       title: "Dashboard Analytics",
       description: "Dashboard interactivo para análisis de datos con gráficos en tiempo real y métricas avanzadas.",
       technologies: ["React", "D3.js", "Express", "PostgreSQL"],
-      image: "Analytics dashboard with charts and data visualization"
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+      github: "https://github.com/agustinmruiz/dashboard-analytics",
+      demo: "https://dashboard-analytics.com/"
     },
     {
       title: "App de Gestión",
       description: "Aplicación web para gestión de proyectos con sistema de tareas, calendario y colaboración en equipo.",
       technologies: ["Vue.js", "Laravel", "MySQL", "Socket.io"],
-      image: "Project management application interface with task boards"
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=400&fit=crop",
+      github: "https://github.com/agustinmruiz/app-gestion",    // En proceso de desarrollo
+      demo: "https://app-gestion.com/"
     },
     {
       title: "Portfolio Creativo",
       description: "Sitio web portfolio para artista digital con galería interactiva y animaciones personalizadas.",
       technologies: ["React", "Framer Motion", "Sanity CMS"],
-      image: "Creative portfolio website with artistic gallery layout"
+      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=400&fit=crop",
+      github: "https://github.com/agustinmruiz/portfolio-creativo", // En proceso de desarrollo
+      demo: "https://portfolio-creativo.com/"
     },
     {
       title: "API RESTful",
       description: "API robusta para aplicación móvil con autenticación JWT, documentación completa y testing.",
       technologies: ["Node.js", "Express", "MongoDB", "JWT"],
-      image: "API documentation interface with endpoint listings"
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+      github: "https://github.com/agustinmruiz/api-restful", // En proceso de desarrollo
+      demo: "https://api-restful.com/"
     },
     {
       title: "Blog Corporativo",
       description: "Blog empresarial con CMS personalizado, SEO optimizado y sistema de comentarios.",
       technologies: ["WordPress", "PHP", "MySQL", "Custom Theme"],
-      image: "Corporate blog website with professional layout"
+      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop",
+      github: "https://github.com/agustinmruiz/blog-corporativo", // En proceso de desarrollo
+      demo: "https://blog-corporativo.com/"
     }
   ];
 
@@ -98,10 +109,22 @@ const ProjectsSection = () => {
                 className="glass-card project-card group"
               >
                 <div className="relative overflow-hidden rounded-t-2xl">
-                  <img 
-                    alt={`Screenshot del proyecto ${project.title}`}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                   src="https://images.unsplash.com/photo-1572177812156-58036aae439c" />
+                  {project.video ? (
+                    <video
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      src={project.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img 
+                      alt={`Screenshot del proyecto ${project.title}`}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      src={project.image}
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
@@ -125,6 +148,7 @@ const ProjectsSection = () => {
                   </div>
                   
                   <div className="flex gap-3">
+                    {project.demo ? ( 
                     <Button 
                       onClick={handleDemo}
                       size="sm" 
@@ -133,6 +157,8 @@ const ProjectsSection = () => {
                       <Eye size={16} />
                       Demo
                     </Button>
+                    ) : null }
+                    {project.github ? ( 
                     <Button 
                       onClick={handleGithub}
                       variant="outline" 
@@ -141,7 +167,8 @@ const ProjectsSection = () => {
                     >
                       <Github size={16} />
                       Código
-                    </Button>
+                      </Button>
+                    ) : null }
                   </div>
                 </div>
               </motion.div>
